@@ -1848,27 +1848,13 @@ section {
   }
 }
 
-/* Learning effectiveness & impact: approved assessment evidence workbench */
+/* Effectiveness & impact: assessment evidence workbench */
 .assessment-lab {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 28px;
   background: var(--paper);
   box-shadow: 0 28px 70px rgba(8, 23, 47, 0.12);
-}
-
-.assessment-lab__header {
-  padding: 58px 64px 48px;
-  border-bottom: 1px solid var(--line);
-}
-
-.assessment-lab__heading h2 {
-  max-width: 650px;
-  margin-bottom: 0;
-  color: var(--navy);
-  font-size: clamp(34px, 4vw, 58px);
-  line-height: 1.02;
-  letter-spacing: -0.05em;
 }
 
 .workbench-kicker,
@@ -1883,34 +1869,15 @@ section {
 }
 
 .evidence-boundary {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.72fr) minmax(580px, 1.28fr);
-  gap: 56px;
-  align-items: center;
-  padding: 56px 64px;
+  padding: 46px 64px 54px;
   background:
     linear-gradient(125deg, rgba(234, 240, 255, 0.72), rgba(255, 255, 255, 0.94) 52%, rgba(74, 199, 232, 0.08));
 }
 
-.evidence-boundary__copy h2,
 .workbench__head h2,
 .method-boundary h2 {
   color: var(--navy);
   letter-spacing: -0.035em;
-}
-
-.evidence-boundary__copy h2 {
-  margin-bottom: 14px;
-  font-size: clamp(27px, 3vw, 40px);
-  line-height: 1.08;
-}
-
-.evidence-boundary__copy > p:last-child {
-  max-width: 520px;
-  margin-bottom: 0;
-  color: var(--ink-soft);
-  font-size: 15px;
-  line-height: 1.68;
 }
 
 .evidence-constellation {
@@ -3067,15 +3034,12 @@ section {
 }
 
 @media (max-width: 1040px) {
-  .assessment-lab__header,
-  .evidence-boundary,
   .workbench__head,
   .method-boundary {
     grid-template-columns: 1fr;
     gap: 28px;
   }
 
-  .assessment-lab__header,
   .evidence-boundary,
   .workbench,
   .method-boundary {
@@ -3083,11 +3047,6 @@ section {
     padding-left: 38px;
   }
 
-  .evidence-boundary {
-    align-items: start;
-  }
-
-  .evidence-boundary__copy > p:last-child,
   .workbench__head > p {
     max-width: 760px;
     justify-self: start;
@@ -3123,21 +3082,11 @@ section {
     border-radius: 20px;
   }
 
-  .assessment-lab__header,
   .evidence-boundary,
   .workbench,
   .method-boundary {
     padding: 32px 22px;
   }
-
-  .assessment-lab__header {
-    gap: 22px;
-  }
-
-  .assessment-lab__heading h2 {
-    font-size: clamp(32px, 11vw, 47px);
-  }
-
 
   .evidence-constellation {
     grid-template-columns: 1fr;
@@ -3358,7 +3307,6 @@ section {
 
 @media (max-width: 430px) {
 
-  .assessment-lab__header,
   .evidence-boundary,
   .workbench,
   .method-boundary {
