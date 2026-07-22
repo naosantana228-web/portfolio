@@ -1851,6 +1851,7 @@ section {
 /* Effectiveness & impact: assessment evidence workbench */
 .assessment-lab {
   overflow: hidden;
+  padding: 0;
   border: 1px solid var(--line);
   border-radius: 28px;
   background: var(--paper);
@@ -2012,7 +2013,6 @@ section {
 
 .workbench {
   padding: 58px 64px 64px;
-  border-top: 1px solid var(--line);
 }
 
 .workbench__head {
