@@ -1,267 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Naomi Santana Sosa — Instructional Design Portfolio</title>
-<style>
-  :root{--ink:#141a26;--muted:#5c6675;--blue:#2f6bff;--indigo:#4a2fd6;--bg:#f4f6fa;--line:#e4e9f0;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
-
-  /* Nav */
-  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
-  nav .logo{font-weight:800;font-size:18px;letter-spacing:-.3px;}
-  nav .links{display:flex;gap:26px;font-size:15px;font-weight:600;color:var(--muted);}
-  nav .links a:hover{color:var(--blue);}
-
-  /* Hero */
-  header{background:linear-gradient(125deg,#0f1b33,#1c2f57 55%,#26407a);color:#fff;padding:74px 0 82px;}
-  header .tag{display:inline-block;background:rgba(255,255,255,.14);padding:7px 16px;border-radius:20px;font-size:13px;font-weight:700;letter-spacing:.5px;}
-  header h1{font-size:52px;font-weight:800;letter-spacing:-1px;margin-top:20px;}
-  header .role{font-size:22px;font-weight:600;margin-top:10px;color:#bcd0ff;}
-  header p{max-width:720px;font-size:18px;margin-top:20px;opacity:.92;}
-  header .cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{background:var(--blue);color:#fff;padding:14px 26px;border-radius:11px;font-weight:700;font-size:15px;display:inline-block;}
-  .btn.ghost{background:rgba(255,255,255,.12);}
-
-  section{padding:64px 0;}
-  section h2{font-size:30px;font-weight:800;letter-spacing:-.5px;}
-  section .lead{color:var(--muted);font-size:17px;margin-top:8px;max-width:760px;}
-
-  /* Skills */
-  .skillgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px;}
-  .scard{background:#fff;border-radius:14px;padding:24px;border-top:3px solid var(--blue);box-shadow:0 3px 12px rgba(20,30,60,.05);}
-  .scard h3{font-size:17px;}
-  .scard p{color:var(--muted);font-size:14.5px;margin-top:8px;}
-  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
-  .chip{background:#fff;border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-size:14px;font-weight:600;color:#37414f;}
-
-  /* Samples */
-  .samples{background:#fff;}
-  .sample{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;margin-top:44px;}
-  .sample:nth-child(even) .shot{order:2;}
-  .shot{border-radius:14px;overflow:hidden;box-shadow:0 10px 34px rgba(20,30,60,.16);border:1px solid var(--line);}
-  .shot img{width:100%;display:block;}
-  .sample .kick{color:var(--blue);font-weight:800;font-size:13px;letter-spacing:1.5px;}
-  .sample h3{font-size:23px;margin-top:8px;}
-  .sample p{color:var(--muted);margin-top:12px;font-size:16px;}
-  .sample ul{margin-top:14px;padding-left:0;list-style:none;}
-  .sample li{font-size:15px;color:#37414f;margin-bottom:8px;display:flex;gap:10px;}
-  .sample li::before{content:"✓";color:#12a150;font-weight:800;}
-  .note{background:#eef3ff;border-left:4px solid var(--blue);padding:10px 16px;border-radius:8px;font-size:13.5px;color:#33415c;margin-top:16px;}
-
-  /* Case studies */
-  .cases{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px;}
-  .case{background:#fff;border-radius:16px;padding:30px;box-shadow:0 3px 12px rgba(20,30,60,.05);}
-  .case .num{font-size:13px;font-weight:800;color:var(--indigo);letter-spacing:1px;}
-  .case h3{font-size:20px;margin-top:8px;}
-  .case .blk{margin-top:16px;}
-  .case .blk b{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:#8a94a3;}
-  .case .blk p{font-size:15px;color:#3a4453;margin-top:4px;}
-  .metric{display:inline-block;background:#eafaf0;color:#0f8a45;font-weight:800;font-size:14px;padding:6px 14px;border-radius:8px;margin-top:14px;}
-
-  /* Approach */
-  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:34px;}
-  .step{background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 3px 12px rgba(20,30,60,.05);}
-  .step .c{width:40px;height:40px;border-radius:50%;background:#e8f0ff;color:var(--blue);font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
-  .step h4{font-size:15px;}
-  .step p{font-size:13px;color:var(--muted);margin-top:6px;}
-
-  footer{background:#0f1b33;color:#fff;padding:54px 0;}
-  footer h2{font-size:26px;font-weight:800;}
-  footer p{opacity:.85;margin-top:10px;}
-  footer .contact{display:flex;gap:22px;margin-top:22px;flex-wrap:wrap;font-size:15px;}
-  footer .contact a{background:rgba(255,255,255,.12);padding:12px 20px;border-radius:10px;font-weight:600;}
-  .fineprint{opacity:.6;font-size:13px;margin-top:30px;max-width:760px;}
-
-  @media(max-width:860px){
-    .skillgrid,.cases{grid-template-columns:1fr;}
-    .sample{grid-template-columns:1fr;}
-    .sample:nth-child(even) .shot{order:0;}
-    .steps{grid-template-columns:1fr 1fr;}
-    header h1{font-size:38px;}
-    nav .links{display:none;}
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Naomi Santana Sosa, a learning strategist and instructional designer specialising in performance analysis, AI enablement, compliance, onboarding, learning ecosystems, assessment, and measurable improvement.">
+  <title>Naomi Santana Sosa | Learning Strategy and Instructional Design</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=20260722-assessment-workbench-v4">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to portfolio</a>
 
-<nav><div class="wrap">
-  <div class="logo">Naomi Santana Sosa</div>
-  <div class="links">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#samples">Work Samples</a>
-    <a href="#cases">Case Studies</a>
-    <a href="#process">Process</a>
-    <a href="#contact">Contact</a>
-  </div>
-</div></nav>
-
-<header><div class="wrap">
-  <span class="tag">INSTRUCTIONAL DESIGN · LEARNING EXPERIENCE · AI ENABLEMENT</span>
-  <h1>Instructional Design Portfolio</h1>
-  <div class="role">Naomi Santana Sosa — Senior Learning &amp; Development Specialist</div>
-  <p>I design learning experiences that help people adopt new tools and processes with confidence — from AI-tool rollouts and reviewer onboarding to compliance and multilingual training. I work across the full ADDIE and SAM lifecycle in Articulate Storyline 360, Rise 360, and enterprise LMS platforms.</p>
-  <div class="cta">
-    <a class="btn" href="#samples">View Work Samples</a>
-    <a class="btn ghost" href="#contact">Get in Touch</a>
-  </div>
-</div></header>
-
-<section id="about"><div class="wrap">
-  <h2>About</h2>
-  <p class="lead">I am a learning and development specialist with experience designing scalable, high-impact training for large, fast-moving operations teams. My recent focus is enabling people to work effectively alongside AI tools: translating complex new workflows into clear, confidence-building learning that measurably improves adoption, quality, and efficiency. I hold Google UX Design and Program Management certificates and am completing an MSc in Artificial Intelligence for Business. I design and facilitate in English, Spanish, and French.</p>
-</div></section>
-
-<section id="skills" style="background:#fff;"><div class="wrap">
-  <h2>What I Do</h2>
-  <p class="lead">Full-lifecycle instructional design, from needs analysis through build, launch, and measurement.</p>
-  <div class="skillgrid">
-    <div class="scard"><h3>E-Learning Design &amp; Development</h3><p>Interactive modules, scenario-based practice, knowledge checks, and job aids built in Articulate Storyline 360 and Rise 360, published to SCORM and xAPI.</p></div>
-    <div class="scard"><h3>Learning Strategy &amp; Analysis</h3><p>Needs assessments with SMEs, learning objectives, blended solutions, and evaluation strategies grounded in adult-learning principles (ADDIE / SAM).</p></div>
-    <div class="scard"><h3>AI Enablement &amp; Change Training</h3><p>Change-management training for new AI tools and workflows, helping teams adopt new ways of working while keeping human judgment in the lead.</p></div>
-    <div class="scard"><h3>LMS &amp; Content Operations</h3><p>Administration and publishing across enterprise LMS/LCMS platforms, managing the full content lifecycle from concept through revision to retirement.</p></div>
-    <div class="scard"><h3>Measurement &amp; Quality</h3><p>Assessment design, knowledge checks, quality frameworks, performance dashboards, and impact reporting to prove learning outcomes.</p></div>
-    <div class="scard"><h3>Multilingual Delivery</h3><p>Designing and facilitating learning across English, Spanish, and French for international and distributed audiences.</p></div>
-  </div>
-  <div class="chips">
-    <span class="chip">Articulate Storyline 360</span>
-    <span class="chip">Articulate Rise 360</span>
-    <span class="chip">ADDIE</span>
-    <span class="chip">SAM</span>
-    <span class="chip">SCORM</span>
-    <span class="chip">xAPI</span>
-    <span class="chip">LMS / LCMS</span>
-    <span class="chip">Workday Learning</span>
-    <span class="chip">Absorb</span>
-    <span class="chip">Needs Analysis</span>
-    <span class="chip">Storyboarding</span>
-    <span class="chip">Assessment Design</span>
-    <span class="chip">Power BI Dashboards</span>
-    <span class="chip">Process Mapping (BPMN)</span>
-  </div>
-</div></section>
-
-<section id="samples" class="samples"><div class="wrap">
-  <h2>Work Samples</h2>
-  <p class="lead">A demonstration project built to showcase my design approach for AI-tool enablement. Content is fictional and created specifically for this portfolio, so it is fully shareable.</p>
-
-  <div class="sample">
-    <div class="shot"><img src="demo_home.png" alt="Course home page"></div>
-    <div>
-      <div class="kick">DEMO · COURSE HOME</div>
-      <h3>Reviewer Onboarding: AI Assist</h3>
-      <p>A short change-training course that introduces a new AI assistant to an operations team. The home page sets expectations, scopes the learning to "only what is new," and frames a clear five-module journey.</p>
-      <ul>
-        <li>Clear time-to-complete and module structure</li>
-        <li>Progress tracking and guided sequencing</li>
-        <li>Reassuring tone that reduces change anxiety</li>
-      </ul>
+  <header class="site-header">
+    <div class="header-inner shell">
+      <a class="brand" href="#main" aria-label="Naomi Santana Sosa, home">
+        <img class="brand-wordmark" src="assets/naomi-santana-sosa-wordmark.png" width="1600" height="198" alt="" decoding="async">
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="sample">
-    <div class="shot"><img src="demo_module.png" alt="Module page with knowledge check"></div>
-    <div>
-      <div class="kick">DEMO · MODULE + KNOWLEDGE CHECK</div>
-      <h3>Getting Started</h3>
-      <p>A content module using a "What's New vs. What Stays the Same" pattern to lower resistance, explicit learning objectives, and an interactive knowledge check that must be passed to unlock the next module.</p>
-      <ul>
-        <li>Adult-learning framing built on existing skills</li>
-        <li>Measurable, action-oriented objectives</li>
-        <li>Scenario-style knowledge check with gating</li>
-      </ul>
-    </div>
-  </div>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner shell">
+        <div class="hero-message">
+          <p class="eyebrow">Learning strategy · Instructional design · AI enablement</p>
+          <h1 id="hero-title">Learning strategy that moves work forward.</h1>
+          <p class="hero-copy">I turn complex requests, policy requirements, and new technology into practical systems for better decisions, stronger capability, and measurable performance.</p>
+          <div class="actions">
+            <a class="button" href="#projects">Explore projects</a>
+            <a class="button secondary" href="#contact">Contact Naomi</a>
+          </div>
+        </div>
+        <ul class="hero-proof" aria-label="Portfolio scope">
+          <li><strong>Programme scale</strong><span>15 self paced courses</span></li>
+          <li><strong>Reach</strong><span>Global and multilingual</span></li>
+          <li><strong>Scope</strong><span>Analysis through evaluation</span></li>
+          <li><strong>Direction</strong><span>L&amp;D management and strategy</span></li>
+        </ul>
+      </div>
+    </section>
 
-  <div class="sample">
-    <div class="shot"><img src="demo_decision.png" alt="Decision framework and process diagram"></div>
-    <div>
-      <div class="kick">DEMO · DECISION FRAMEWORK</div>
-      <h3>Turning Complex Logic into a Simple Heuristic</h3>
-      <p>Complex decision logic distilled into a three-step heuristic and a colour-coded process diagram, so learners can internalise a four-option workflow at a glance rather than memorising rules.</p>
-      <ul>
-        <li>Cognitive-load reduction through visual design</li>
-        <li>Consistent colour language across options</li>
-        <li>Clear line of sight from decision to outcome</li>
-      </ul>
-    </div>
-  </div>
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="shell">
+        <div class="about-grid">
+          <div>
+            <p class="section-label">About</p>
+            <h2 id="about-title">Performance centred learning design with a leadership mindset.</h2>
+          </div>
+          <div>
+            <p>I start with the work, not the course. I clarify the business result, the people involved, the performance expected, and the barriers getting in the way. Then I align stakeholders around the lightest effective response and carry quality from discovery through delivery and improvement.</p>
+            <p>I bring structured analysis, calm prioritisation, multilingual communication, and responsible use of technology to fast moving work. I work in English, Spanish, and French, hold Google UX Design and Program Management certificates, and am completing an MSc in Artificial Intelligence for Business.</p>
+          </div>
+        </div>
 
-  <div class="note"><b>A note on confidentiality:</b> My professional work is produced under NDA for large employers, so it cannot be shared directly. The samples above are original, fictional recreations built to demonstrate the same design craft. Additional live builds can be walked through in an interview.</div>
-</div></div></section>
+        <div class="expertise-grid" aria-label="Core areas of practice">
+          <article class="expertise-card"><span>01</span><h3>Strategy and performance</h3><p>Business goals, workflow realities, audience needs, and measurable outcomes before solution selection.</p></article>
+          <article class="expertise-card"><span>02</span><h3>Stakeholder and delivery leadership</h3><p>Clear decisions, ownership, priorities, dependencies, risks, and review gates that keep work moving.</p></article>
+          <article class="expertise-card"><span>03</span><h3>Learning ecosystems and quality</h3><p>The right mix of guidance, practice, support, assessment, accessibility, reinforcement, and evidence.</p></article>
+        </div>
 
-<section id="cases"><div class="wrap">
-  <h2>Selected Case Studies</h2>
-  <p class="lead">Real projects, described without confidential details. Metrics are drawn from my actual results.</p>
-  <div class="cases">
+        <div class="portfolio-explorer" data-portfolio-explorer>
+          <div class="portfolio-tabs" role="tablist" aria-label="Explore Naomi's portfolio" hidden>
+            <button class="portfolio-tab" type="button" role="tab" id="portfolio-tab-projects" aria-controls="projects" aria-selected="true" data-portfolio-tab="projects">Projects</button>
+            <button class="portfolio-tab" type="button" role="tab" id="portfolio-tab-evidence" aria-controls="evidence" aria-selected="false" tabindex="-1" data-portfolio-tab="evidence">Metrics &amp; evidence</button>
+            <button class="portfolio-tab" type="button" role="tab" id="portfolio-tab-assessment" aria-controls="assessment" aria-selected="false" tabindex="-1" data-portfolio-tab="assessment">Effectiveness &amp; impact</button>
+            <button class="portfolio-tab" type="button" role="tab" id="portfolio-tab-leadership" aria-controls="leadership" aria-selected="false" tabindex="-1" data-portfolio-tab="leadership">How I lead the work</button>
+          </div>
 
-    <div class="case">
-      <div class="num">CASE STUDY 01</div>
-      <h3>AI-Tool Adoption Program</h3>
-      <div class="blk"><b>Challenge</b><p>A large operations team needed to adopt a new AI-assisted workflow quickly, without losing quality or independent judgment.</p></div>
-      <div class="blk"><b>Approach</b><p>Designed a blended change-training program: a scoped e-learning course, a decision heuristic, scenario practice, and job aids, all built around adult-learning principles and validated with SMEs.</p></div>
-      <div class="blk"><b>Result</b><p>Faster, more confident adoption of the new tool with quality maintained through built-in knowledge checks and practice.</p></div>
-      <span class="metric">Up to 80% efficiency gain in workflow</span>
-    </div>
+          <div class="portfolio-panels">
+            <section class="portfolio-panel projects-panel" id="projects" role="tabpanel" aria-labelledby="portfolio-tab-projects" data-portfolio-panel="projects">
+              <span class="legacy-anchor" id="portfolio" aria-hidden="true"></span>
+              <span class="legacy-anchor" id="additional-work" aria-hidden="true"></span>
+              <div class="panel-head">
+                <div><p class="section-label">Projects</p><h2>Six project areas. One connected practice.</h2></div>
+                <p>Explore work across analysis, AI adoption, scenario practice, global compliance, urgent enablement, workflow support, and live delivery. Each case shows the context, contribution, design decisions, and evidence available to share.</p>
+              </div>
 
-    <div class="case">
-      <div class="num">CASE STUDY 02</div>
-      <h3>Onboarding Redesign</h3>
-      <div class="blk"><b>Challenge</b><p>New-hire ramp-up was slow and inconsistent across a distributed, multilingual team.</p></div>
-      <div class="blk"><b>Approach</b><p>Rebuilt the onboarding journey with clearer objectives, chunked modules, hands-on practice, and measurement at each stage; localised for multiple languages.</p></div>
-      <div class="blk"><b>Result</b><p>Measurably faster time-to-productivity and a more consistent learner experience across regions.</p></div>
-      <span class="metric">~20% improvement in onboarding</span>
-    </div>
+              <div class="portfolio-grid unified-projects">
+                <article class="portfolio-card">
+                  <a class="project-link" href="projects/reviewer-onboarding-ai-assist/" aria-label="View Reviewer Onboarding: AI Assist project">
+                    <span class="portfolio-art image-frame"><img loading="lazy" decoding="async" src="assets/originals/github/demo_home.png" width="3200" height="2322" alt="Original GitHub portfolio course home screen for Reviewer Onboarding: AI Assist"></span>
+                    <span class="portfolio-body"><span class="portfolio-index">PROJECT 01 · AI ADOPTION</span><strong class="project-title">Reviewer Onboarding: AI Assist</strong><span class="project-summary">A fictional onboarding journey for confident, accountable use of an AI supported review workflow.</span><span class="role">Contribution: learning journey, scenario practice, decision support</span><span class="view-project">View project <span aria-hidden="true">→</span></span></span>
+                  </a>
+                </article>
 
-    <div class="case">
-      <div class="num">CASE STUDY 03</div>
-      <h3>Training Quality Framework</h3>
-      <div class="blk"><b>Challenge</b><p>Training quality was hard to measure and varied between facilitators and cohorts.</p></div>
-      <div class="blk"><b>Approach</b><p>Established a quality framework with defined KPIs, weekly evaluations, and a feedback loop, plus dashboards to surface trends and target improvements.</p></div>
-      <div class="blk"><b>Result</b><p>Consistent quality standards, clearer visibility for stakeholders, and a repeatable improvement cycle.</p></div>
-      <span class="metric">Standardised KPIs + dashboards</span>
-    </div>
+                <article class="portfolio-card">
+                  <a class="project-link" href="projects/scenario-based-policy-practice/" aria-label="View Scenario Based Policy Practice project">
+                    <span class="portfolio-art image-frame"><img loading="lazy" decoding="async" src="assets/source-files/policy-game/card-start-clean.jpg" width="940" height="528" alt="Policy Game start screen with a television, instructions, and Start button"></span>
+                    <span class="portfolio-body"><span class="portfolio-index">PROJECT 02 · SCENARIO PRACTICE</span><strong class="project-title">Scenario Based Policy Practice</strong><span class="project-summary">A television and remote simulation with progressive onboarding, judgement choices, feedback, and retry logic.</span><span class="project-evidence-cue">Includes verified live states</span><span class="role">Contribution: storyboarding, interaction design, assessment</span><span class="view-project">View project <span aria-hidden="true">→</span></span></span>
+                  </a>
+                </article>
 
-    <div class="case">
-      <div class="num">CASE STUDY 04</div>
-      <h3>Process Automation &amp; Efficiency</h3>
-      <div class="blk"><b>Challenge</b><p>Manual, repetitive learning-operations tasks were consuming capacity that could be spent on design.</p></div>
-      <div class="blk"><b>Approach</b><p>Mapped the processes, then designed and implemented automations (workflow orchestration and integrations) to remove manual steps and connect learning systems.</p></div>
-      <div class="blk"><b>Result</b><p>Reclaimed capacity and reduced errors, freeing time for higher-value instructional design work.</p></div>
-      <span class="metric">Equivalent of one full role saved</span>
-    </div>
+                <article class="portfolio-card">
+                  <a class="project-link" href="projects/global-compliance-learning/" aria-label="View Global Compliance Learning at Scale project with edited Absorb layout examples">
+                    <span class="portfolio-art image-frame"><img loading="lazy" decoding="async" src="assets/reconstructions/global-compliance/01-absorb-content-catalog.png" width="1632" height="2176" alt="Focused edited Absorb Content catalogue preserving the supplied layout with fictional compliance course content"></span>
+                    <span class="portfolio-body"><span class="portfolio-index">PROJECT 03 · CURRICULUM &amp; LMS</span><strong class="project-title">Global Compliance Learning at Scale</strong><span class="project-summary">A reusable LMS template shared across regional teams within a wider 15 course compliance programme.</span><span class="project-evidence-cue">Includes edited Absorb layout examples</span><span class="role">Contribution: template design, curriculum, LMS operations</span><span class="view-project">View project and interface examples <span aria-hidden="true">→</span></span></span>
+                  </a>
+                </article>
 
-  </div>
-</div></section>
+                <article class="portfolio-card">
+                  <a class="project-link" href="projects/rapid-response-microlearning/" aria-label="View Rapid Compliance Microlearning project">
+                    <span class="portfolio-art image-frame"><img loading="lazy" decoding="async" src="assets/originals/adobe/adobe-premiere-pro-training.png" width="1990" height="1122" alt="Original Adobe Portfolio cover for the historical urgent compliance training project"></span>
+                    <span class="portfolio-body"><span class="portfolio-index">PROJECT 04 · RAPID ENABLEMENT</span><strong class="project-title">Rapid Compliance Microlearning</strong><span class="project-summary">Complex guidance translated into concise multimedia learning for an urgent requirement.</span><span class="role">Contribution: scripting, multimedia design, review</span><span class="view-project">View project <span aria-hidden="true">→</span></span></span>
+                  </a>
+                </article>
 
-<section id="process" style="background:#fff;"><div class="wrap">
-  <h2>My Design Process</h2>
-  <p class="lead">A practical blend of ADDIE and SAM, adapted to fast-moving environments.</p>
-  <div class="steps">
-    <div class="step"><div class="c">1</div><h4>Analyse</h4><p>Needs analysis with SMEs and data</p></div>
-    <div class="step"><div class="c">2</div><h4>Design</h4><p>Objectives, storyboard, assessment plan</p></div>
-    <div class="step"><div class="c">3</div><h4>Develop</h4><p>Build in Storyline / Rise, iterate</p></div>
-    <div class="step"><div class="c">4</div><h4>Implement</h4><p>Publish to LMS, launch, support</p></div>
-    <div class="step"><div class="c">5</div><h4>Evaluate</h4><p>Measure impact, refine, retire</p></div>
-  </div>
-</div></section>
+                <article class="portfolio-card">
+                  <a class="project-link" href="projects/workflow-performance-support/" aria-label="View Workflow Performance Support project">
+                    <span class="portfolio-art image-frame"><img loading="lazy" decoding="async" src="assets/originals/adobe/visual-aids.png" width="1358" height="765" alt="Original Adobe Portfolio cover for the Visual Aids project"></span>
+                    <span class="portfolio-body"><span class="portfolio-index">PROJECT 05 · PERFORMANCE SUPPORT</span><strong class="project-title">Workflow Performance Support</strong><span class="project-summary">Visual aids available when people need to complete steps and apply examples during live work.</span><span class="role">Contribution: job aid design, examples, usability</span><span class="view-project">View project <span aria-hidden="true">→</span></span></span>
+                  </a>
+                </article>
 
-<footer id="contact"><div class="wrap">
-  <h2>Let's talk</h2>
-  <p>Available for Instructional Design and Learning Experience roles in Ireland and remotely across the EU.</p>
-  <div class="contact">
-    <a href="mailto:nao.santana228@gmail.com">nao.santana228@gmail.com</a>
-    <a href="https://www.linkedin.com/in/naomi-santana-797504239/" target="_blank">LinkedIn</a>
-  </div>
-  <p class="fineprint">All professional work referenced in this portfolio was produced under confidentiality agreements and is not reproduced here. The "Work Samples" shown are original, fictional demonstrations created solely to illustrate design capability, and do not represent any employer's proprietary content, tools, or data.</p>
-</div></footer>
+                <article class="portfolio-card">
+                  <a class="project-link" href="projects/facilitator-resources/" aria-label="View Instructor Led Training Decks project">
+                    <span class="portfolio-art image-frame"><img loading="lazy" decoding="async" src="assets/originals/adobe/self-paced-courses-lms.png" width="1713" height="965" alt="Original Adobe Portfolio cover for an instructor led training deck"></span>
+                    <span class="portfolio-body"><span class="portfolio-index">PROJECT 06 · LIVE DELIVERY</span><strong class="project-title">Instructor Led Training Decks</strong><span class="project-summary">Presentation materials for clear explanation, guided discussion, practice, and consistent live delivery.</span><span class="role">Contribution: learning design, presentation design, delivery support</span><span class="view-project">View project <span aria-hidden="true">→</span></span></span>
+                  </a>
+                </article>
 
+              </div>
+            </section>
+
+            <section class="portfolio-panel evidence-panel" id="evidence" role="tabpanel" aria-labelledby="portfolio-tab-evidence" data-portfolio-panel="evidence">
+              <span class="legacy-anchor" id="cases" aria-hidden="true"></span>
+              <div class="panel-head compact-panel-head">
+                <div><p class="section-label">Metrics &amp; evidence</p><h2>Evidence, with context.</h2></div>
+                <p>Four selected indicators are presented as evidence stories rather than isolated numbers. Each one separates the reported result, the change in work, and the boundary of the claim.</p>
+              </div>
+
+              <div class="evidence-stories" aria-label="Selected outcome indicators with context">
+                <article class="evidence-story">
+                  <div class="evidence-result">
+                    <span>OUTCOME 01</span>
+                    <strong>Up to 80%</strong>
+                    <h3>Workflow efficiency gain</h3>
+                    <p>A selected workflow result reported after an AI supported process was introduced.</p>
+                  </div>
+                  <div class="evidence-explanation">
+                    <div><span>What changed</span><p>Enablement translated the workflow into clear decisions, practice, and support while keeping human judgement and quality review visible.</p></div>
+                    <div><span>How to read the figure</span><p>The percentage is a reported workflow indicator. It is not presented as an effect of training alone and is not attached to the fictional AI Assist demonstration.</p></div>
+                  </div>
+                </article>
+
+                <article class="evidence-story">
+                  <div class="evidence-result">
+                    <span>OUTCOME 02</span>
+                    <strong>Approximately 20%</strong>
+                    <h3>Onboarding improvement</h3>
+                    <p>A selected onboarding result reported after the learning journey was redesigned.</p>
+                  </div>
+                  <div class="evidence-explanation">
+                    <div><span>What changed</span><p>The sequence, practice, and localisation were redesigned to make the journey clearer and support application across audiences.</p></div>
+                    <div><span>How to read the figure</span><p>The figure is retained as an approximate reported improvement for that redesign. It is not a universal expectation for every onboarding programme.</p></div>
+                  </div>
+                </article>
+
+                <article class="evidence-story">
+                  <div class="evidence-result">
+                    <span>OUTCOME 03</span>
+                    <strong>Shared KPIs</strong>
+                    <h3>Training quality framework</h3>
+                    <p>A common measurement system made quality and improvement visible across delivery.</p>
+                  </div>
+                  <div class="evidence-explanation">
+                    <div><span>What changed</span><p>Shared indicators, repeatable evaluation, and dashboard visibility created a more consistent view of training quality.</p></div>
+                    <div><span>Evidence type</span><p>This is operating system evidence rather than a percentage claim. It demonstrates measurement governance and a repeatable improvement process.</p></div>
+                  </div>
+                </article>
+
+                <article class="evidence-story">
+                  <div class="evidence-result">
+                    <span>OUTCOME 04</span>
+                    <strong>Capacity equivalent to one role</strong>
+                    <h3>Capacity returned</h3>
+                    <p>A selected operating result reported after automation reduced manual effort.</p>
+                  </div>
+                  <div class="evidence-explanation">
+                    <div><span>What changed</span><p>Automation returned capacity while human oversight remained in the workflow for judgement, review, and exceptions.</p></div>
+                    <div><span>How to read the figure</span><p>The equivalence describes reported capacity returned. It does not claim that a role was removed or that every automation would produce the same result.</p></div>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section class="portfolio-panel assessment-panel" id="assessment" role="tabpanel" aria-labelledby="portfolio-tab-assessment" data-portfolio-panel="assessment">
+              <section aria-labelledby="assessment-lab-title" class="assessment-lab">
+              <header class="assessment-lab__header">
+              <div class="assessment-lab__heading">
+              <p class="section-label">Learning effectiveness &amp; impact</p>
+              <h2 id="assessment-lab-title">A score is only useful when its claim is clear.</h2>
+              </div>
+              </header>
+              <section aria-labelledby="evidence-boundary-title" class="evidence-boundary">
+              <div class="evidence-boundary__copy">
+              <p class="workbench-kicker">Start with the evidence boundary</p>
+              <h2 id="evidence-boundary-title">A test score is one signal, not the whole evaluation.</h2>
+              <p>Assessment asks: <em>What does the learner know or demonstrate?</em> Evaluation asks: <em>Did the learning solution achieve its intended result?</em> The strength of the claim determines the evidence required.</p>
+              </div>
+              <div aria-label="Three evidence families contribute to an evaluation of impact" class="evidence-constellation">
+              <article class="signal-card signal-card--learning">
+              <span class="signal-card__tag">Assessment lives here</span>
+              <div aria-hidden="true" class="signal-card__icon">
+              <svg viewbox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h5M8 16h7"></path></svg>
+              </div>
+              <h3>Learning performance</h3>
+              <p>Did learners gain or demonstrate the required knowledge and skill?</p>
+              </article>
+              <article class="signal-card">
+              <div aria-hidden="true" class="signal-card__icon">
+              <svg viewbox="0 0 24 24"><path d="M4 18h4v-7H4zM10 18h4V6h-4zM16 18h4V9h-4z"></path></svg>
+              </div>
+              <h3>Performance support</h3>
+              <p>Can learners apply it with the right support in the flow of work?</p>
+              </article>
+              <article class="signal-card">
+              <div aria-hidden="true" class="signal-card__icon">
+              <svg viewbox="0 0 24 24"><path d="M4 19V5M4 19h16M7 15l4-4 3 2 5-6"></path></svg>
+              </div>
+              <h3>Business performance</h3>
+              <p>Did relevant operational outcomes such as time, volume, reach, or cost change?</p>
+              </article>
+              <div aria-label="Impact requires aligned evidence" class="impact-node">
+              <span>Evaluation</span>
+              <strong>Aligned evidence</strong>
+              <small>not one metric</small>
+              </div>
+              </div>
+              </section>
+              <section aria-labelledby="workbench-title" class="workbench">
+              <div class="workbench__head">
+              <div>
+              <h2 id="workbench-title">Assessment evidence workbench.</h2>
+              </div>
+              </div>
+              <div class="workbench__frame">
+              <nav aria-label="Assessment workbench views" class="workbench-nav" role="tablist">
+              <button aria-controls="lab-panel-claim" aria-selected="true" class="workbench-nav__button" data-lab-tab="claim" id="lab-tab-claim" role="tab" type="button">
+              <span aria-hidden="true" class="workbench-nav__mark">
+              <svg viewbox="0 0 24 24"><path d="M4 7h10M4 12h16M4 17h7M17 4v6M14 7h6"></path></svg>
+              </span>
+              <span><strong>Frame the claim</strong><small>Purpose · risk · complexity</small></span>
+              </button>
+              <button aria-controls="lab-panel-quality" aria-selected="false" class="workbench-nav__button" data-lab-tab="quality" id="lab-tab-quality" role="tab" tabindex="-1" type="button">
+              <span aria-hidden="true" class="workbench-nav__mark">
+              <svg viewbox="0 0 24 24"><path d="M12 3l7 4v5c0 4.7-2.9 7.3-7 9-4.1-1.7-7-4.3-7-9V7zM9 12l2 2 4-5"></path></svg>
+              </span>
+              <span><strong>Test score quality</strong><small>Five psychometric values</small></span>
+              </button>
+              <button aria-controls="lab-panel-blueprint" aria-selected="false" class="workbench-nav__button" data-lab-tab="blueprint" id="lab-tab-blueprint" role="tab" tabindex="-1" type="button">
+              <span aria-hidden="true" class="workbench-nav__mark">
+              <svg viewbox="0 0 24 24"><path d="M4 6h5v5H4zM15 4h5v5h-5zM15 15h5v5h-5zM9 8h4a4 4 0 014 4v3M6.5 11v6h8"></path></svg>
+              </span>
+              <span><strong>Trace the blueprint</strong><small>PNA/RWA → blueprint → evidence</small></span>
+              </button>
+              </nav>
+              <div class="workbench-canvas">
+              <section aria-labelledby="lab-tab-claim" class="lab-panel lab-panel--claim" data-lab-panel="claim" id="lab-panel-claim" role="tabpanel">
+              <div class="claim-builder">
+              <form aria-label="Assessment design inputs" class="claim-controls">
+              <div class="claim-controls__intro">
+              <p class="canvas-label">Design inputs</p>
+              <h3>Set the claim context.</h3>
+              </div>
+              <fieldset class="segmented-control">
+              <legend>Purpose</legend>
+              <div>
+              <label><input checked="" name="purpose" type="radio" value="formative"/><span><strong>Formative</strong><small>Support learning</small></span></label>
+              <label><input name="purpose" type="radio" value="summative"/><span><strong>Summative</strong><small>Verify capability</small></span></label>
+              </div>
+              </fieldset>
+              <fieldset class="segmented-control">
+              <legend>Risk if wrong</legend>
+              <div>
+              <label><input checked="" name="criticality" type="radio" value="low"/><span>Low</span></label>
+              <label><input name="criticality" type="radio" value="high"/><span>High</span></label>
+              </div>
+              </fieldset>
+              <fieldset class="segmented-control">
+              <legend>Workflow complexity</legend>
+              <div>
+              <label><input checked="" name="complexity" type="radio" value="low"/><span>Low</span></label>
+              <label><input name="complexity" type="radio" value="high"/><span>High</span></label>
+              </div>
+              </fieldset>
+              </form>
+              <article aria-atomic="true" aria-live="polite" class="claim-output">
+              <div class="claim-output__topline">
+              <span class="canvas-label">Design signal</span>
+              <span class="rigor-badge" id="rigor-badge">Flexible practice</span>
+              </div>
+              <div class="claim-output__modality">
+              <span>Recommended format</span>
+              <h3 id="claim-modality">Knowledge or skill check with feedback</h3>
+              <p id="claim-rationale">Use clear prompts and feedback to support learning at the required cognitive level.</p>
+              </div>
+              <dl class="claim-output__limits">
+              <div>
+              <dt>What the result can support</dt>
+              <dd id="claim-supports">The learner has engaged with training and is working toward mastery; the result can guide feedback and further practice.</dd>
+              </div>
+              <div>
+              <dt>What it does not establish</dt>
+              <dd id="claim-boundary">It does not verify readiness for production, sustained job performance, or business impact.</dd>
+              </div>
+              </dl>
+              <div class="claim-output__guardrail">
+              <span aria-hidden="true">!</span>
+              <p id="claim-guardrail">Keep the content aligned to the work, but use the result as an instructional signal, not a gateway decision.</p>
+              </div>
+              <div class="claim-output__governance">
+              <span class="canvas-label">Required evidence</span>
+              <ul id="claim-governance">
+              <li>Clear learning objective</li>
+              <li>Representative content</li>
+              <li>Diagnostic feedback</li>
+              <li>Instructional alignment</li>
+              </ul>
+              </div>
+              </article>
+              </div>
+              <details class="format-disclosure">
+              <summary>Compare format families</summary>
+              <div aria-label="Assessment formats in the source playbook" class="format-strip">
+              <div><strong>Selected response</strong><small>Knowledge and skill checks</small></div>
+              <div><strong>Text simulation</strong><small>Scenario decisions in stable item form</small></div>
+              <div><strong>Performance assessment</strong><small>Practice or assessment in simulated work</small></div>
+              </div>
+              </details>
+              </section>
+              <section aria-labelledby="lab-tab-quality" class="lab-panel lab-panel--quality" data-lab-panel="quality" hidden="" id="lab-panel-quality" role="tabpanel">
+              <div class="quality-head">
+              <div>
+              <p class="canvas-label">Evidence standard</p>
+              <h3>Test the score claim against five psychometric values.</h3>
+              </div>
+              <p>Select a value to examine its question, risk, and design response.</p>
+              </div>
+              <div class="quality-layout">
+              <div aria-label="Five psychometric values surrounding defensible score interpretation" class="quality-map">
+              <div aria-hidden="true" class="quality-map__lines">
+              <svg preserveaspectratio="none" viewbox="0 0 420 390">
+              <path d="M210 195L210 38M210 195L375 130M210 195L320 342M210 195L100 342M210 195L45 130"></path>
+              </svg>
+              </div>
+              <div class="quality-map__centre"><span>Defensible</span><strong>score claim</strong></div>
+              <button aria-pressed="true" class="quality-node quality-node--validity" data-quality="validity" type="button">Validity<small>right thing</small></button>
+              <button aria-pressed="false" class="quality-node quality-node--reliability" data-quality="reliability" type="button">Reliability<small>consistently</small></button>
+              <button aria-pressed="false" class="quality-node quality-node--generalizability" data-quality="generalizability" type="button">Generalizability<small>to the job</small></button>
+              <button aria-pressed="false" class="quality-node quality-node--comparability" data-quality="comparability" type="button">Comparability<small>across forms</small></button>
+              <button aria-pressed="false" class="quality-node quality-node--fairness" data-quality="fairness" type="button">Fairness<small>equal opportunity</small></button>
+              </div>
+              <article aria-atomic="true" aria-live="polite" class="quality-inspector">
+              <p class="canvas-label">Selected quality lens</p>
+              <h3 id="quality-title">Validity</h3>
+              <p class="quality-inspector__lead" id="quality-definition">Supports accurate score interpretation by measuring the right content at the right cognitive level.</p>
+              <dl>
+              <div><dt>Question to ask</dt><dd id="quality-question">Does this assessment measure the work the score claim refers to?</dd></div>
+              <div><dt>If it breaks</dt><dd id="quality-risk">A precise score can still support the wrong conclusion.</dd></div>
+              <div><dt>Design response</dt><dd id="quality-response">Align workflow tasks, performance objectives, assessment objectives, cognition, and content sampling before writing items.</dd></div>
+              </dl>
+              <p class="quality-inspector__note" id="quality-note"><strong>North star:</strong> the other values provide evidence that the intended score interpretation is trustworthy.</p>
+              </article>
+              </div>
+              </section>
+              <section aria-labelledby="lab-tab-blueprint" class="lab-panel lab-panel--blueprint" data-lab-panel="blueprint" hidden="" id="lab-panel-blueprint" role="tabpanel">
+              <div class="blueprint-head">
+              <div>
+              <p class="canvas-label">Blueprint trace</p>
+              <h3>Follow one decision from analysis to the score.</h3>
+              </div>
+              <p>PNA/RWA produces task and objective inputs; the blueprint defines cognitive demand, sampling, and evidence.</p>
+              </div>
+              <section aria-labelledby="analysis-origin-title" class="analysis-origin">
+              <div class="analysis-origin__heading">
+              <p class="canvas-label">Upstream analysis</p>
+              <h3 id="analysis-origin-title">PNA/RWA comes before the blueprint.</h3>
+              </div>
+              <ol class="analysis-origin__flow">
+              <li>
+              <span>01 · PNA</span>
+              <strong>Frame the performance need</strong>
+              <p>Clarify purpose, audience, and intended score use.</p>
+              </li>
+              <li>
+              <span>02 · RWA</span>
+              <strong>Map the work</strong>
+              <p>Define workflows, tasks, knowledge, and performance expectations.</p>
+              </li>
+              <li class="analysis-origin__output">
+              <span>Blueprint input</span>
+              <strong>Carry the work forward</strong>
+              <p>Transfer tasks and performance objectives into the blueprint.</p>
+              </li>
+              </ol>
+              </section>
+              <div aria-label="Blueprint stages derived from PNA and Rapid Workflow Analysis" class="blueprint-trace" role="group">
+              <button aria-pressed="true" data-blueprint="task" type="button"><span aria-hidden="true">Work</span><strong>Task</strong><small>What must be done?</small></button>
+              <button aria-pressed="false" data-blueprint="objective" tabindex="-1" type="button"><span aria-hidden="true">Define</span><strong>Assessment objective</strong><small>What must be shown?</small></button>
+              <button aria-pressed="false" data-blueprint="cognition" tabindex="-1" type="button"><span aria-hidden="true">Demand</span><strong>Cognitive level</strong><small>Remember, apply, analyse?</small></button>
+              <button aria-pressed="false" data-blueprint="sampling" tabindex="-1" type="button"><span aria-hidden="true">Cover</span><strong>Sampling plan</strong><small>What gets weight?</small></button>
+              <button aria-pressed="false" data-blueprint="evidence" tabindex="-1" type="button"><span aria-hidden="true">Observe</span><strong>Evidence format</strong><small>How is skill elicited?</small></button>
+              </div>
+              <article aria-atomic="true" aria-live="polite" class="blueprint-inspector">
+              <div aria-hidden="true" class="blueprint-inspector__index" id="blueprint-index">WORK</div>
+              <div class="blueprint-inspector__content">
+              <p class="canvas-label" id="blueprint-label">Start with the performance</p>
+              <h3 id="blueprint-title">Determine whether example content violates a policy.</h3>
+              <p id="blueprint-description">Rapid Workflow Analysis defines the critical task and knowledge needed to meet the performance expectation. These outputs become the blueprint’s starting inputs.</p>
+              </div>
+              <div class="blueprint-inspector__control">
+              <span>Risk controlled</span>
+              <p id="blueprint-risk">Testing convenient course content instead of the work that the score is meant to represent.</p>
+              </div>
+              </article>
+              <div class="score-claim">
+              <span>Resulting interpretation</span>
+              <p>A passing result can support minimum policy skill under assessed conditions. It does not prove sustained job performance or business impact.</p>
+              </div>
+              </section>
+              </div>
+              </div>
+              </section>
+              <footer class="method-boundary">
+              <div>
+              <p class="workbench-kicker">What this demonstrates</p>
+              <h2>This demonstrates method, not undisclosed outcomes.</h2>
+              </div>
+              <p>It evidences assessment strategy and design judgement; production records, learner data, and operational outcomes remain outside the portfolio.</p>
+              </footer>
+              </section>
+            </section>
+        <section class="portfolio-panel leadership-panel" id="leadership" role="tabpanel" aria-labelledby="portfolio-tab-leadership" data-portfolio-panel="leadership">
+              <span class="legacy-anchor" id="process" aria-hidden="true"></span>
+              <div class="panel-head compact-panel-head">
+                <div><p class="section-label">How I lead the work</p><h2>From ambiguity to performance.</h2></div>
+                <p>I make the decisions, ownership, risks, and evidence visible. Then I align the lightest effective response around the work.</p>
+              </div>
+
+              <ol class="leadership-flow" aria-label="Leadership approach">
+                <li><span>01 · Frame</span><p>Align the result, audience, scope, constraints, ownership, and decision rights.</p></li>
+                <li><span>02 · Diagnose</span><p>Map the work, conditions, assumptions, risks, and evidence gaps before selecting a solution.</p></li>
+                <li><span>03 · Enable</span><p>Orchestrate communication, guidance, practice, learning, support, and coaching around the work.</p></li>
+                <li><span>04 · Improve</span><p>Validate quality, observe evidence, and adapt, scale, stop, or strengthen the response.</p></li>
+              </ol>
+
+              <section class="support-model" aria-labelledby="support-model-title">
+                <div class="support-model-head">
+                  <p class="section-label">Learning ecosystem</p>
+                  <h3 id="support-model-title">Performance at work is the north star.</h3>
+                  <p>Formal learning is one part of a system. I design only the support the work requires.</p>
+                </div>
+                <ol class="support-rail">
+                  <li><span>01</span><div><h4>Prepare the work</h4><p>Direction, standards, roles, communication, and accessible guidance.</p></div></li>
+                  <li><span>02</span><div><h4>Support the moment</h4><p>Examples, scenarios, job aids, feedback, and workflow prompts.</p></div></li>
+                  <li><span>03</span><div><h4>Reinforce and improve</h4><p>Coaching, peer support, adoption, quality, speed, confidence, and business evidence.</p></div></li>
+                </ol>
+              </section>
+
+              <section class="leadership-questions" aria-labelledby="leadership-questions-title">
+                <div class="subsection-head"><p class="section-label">Leadership in practice</p><h3 id="leadership-questions-title">Direct answers to common review questions.</h3></div>
+                <div class="leadership-answers">
+                  <details class="leadership-answer" open><summary><span>01</span>How would you approach a complex request?</summary><div class="leadership-answer-body"><p>I clarify the result and owner, map the work and audience, separate symptoms from causes, and prioritise the tasks with the greatest risk or value. I then propose the right ecosystem instead of automatically recommending a course. I define owners, review points, measures, and trade offs.</p><p class="management-signal"><strong>Management signal</strong><span>Systems thinking · Strategic alignment · Stakeholder influence</span></p></div></details>
+                  <details class="leadership-answer"><summary><span>02</span>How do you work on a tight deadline?</summary><div class="leadership-answer-body"><p>I reduce scope before standards. I protect the fixed outcome, critical practice, accuracy, accessibility, and launch risk, assign owners, use short expert reviews, and move less valuable polish into measured iteration.</p><p class="management-signal"><strong>Management signal</strong><span>Calm prioritisation · Delivery leadership · Risk management</span></p></div></details>
+                  <details class="leadership-answer"><summary><span>03</span>How do you know whether training is the answer?</summary><div class="leadership-answer-body"><p>I test expectations, tools, feedback, consequences, capability, capacity, and motivation. If the barrier is the workflow, system, ownership, or environment, I recommend that change. Learning is for gaps in capability, practice, judgement, or reinforcement.</p><p class="management-signal"><strong>Management signal</strong><span>Performance consulting · Commercial judgement · Cause analysis</span></p></div></details>
+                  <details class="leadership-answer"><summary><span>04</span>How would you lead a team and partners through delivery?</summary><div class="leadership-answer-body"><p>I set outcomes, standards, decision rights, dependencies, and done criteria. I match work to expertise, delegate with context, review while feedback is useful, remove blockers, surface risk early, and turn reviews into coaching.</p><p class="management-signal"><strong>Management signal</strong><span>Team enablement · Collaboration · Communication</span></p></div></details>
+                </div>
+              </section>
+
+              <section class="capability-strip" aria-labelledby="capability-strip-title">
+                <p id="capability-strip-title">L&amp;D management capabilities</p>
+                <ul><li>Strategy</li><li>Stakeholders</li><li>Operations</li><li>Team enablement</li><li>Evidence</li><li>Responsible AI</li></ul>
+              </section>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-grid shell">
+        <div><p class="section-label">Contact</p><h2 id="contact-title">Let’s make complex work easier to perform.</h2><p>I’m interested in L&amp;D management, learning strategy, instructional design, AI enablement, compliance learning, onboarding, and performance support opportunities. Selected work is shown with confidential details removed.</p></div>
+        <div class="contact-links"><a href="mailto:nao.santana228@gmail.com" aria-label="Email Naomi at nao.santana228@gmail.com">Email Naomi</a><a href="https://www.linkedin.com/in/naomi-santana-797504239/" target="_blank" rel="noopener noreferrer" aria-label="View Naomi Santana’s LinkedIn profile">LinkedIn</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer shell"><span>Learning strategy · Instructional design · AI enablement</span><span>© 2026 Naomi Santana Sosa</span></footer>
+  <script src="script.js?v=20260722-assessment-workbench-v4"></script>
 </body>
 </html>
