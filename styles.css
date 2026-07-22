@@ -1870,6 +1870,7 @@ section {
 
 .evidence-boundary {
   padding: 46px 64px 54px;
+  border-top: 1px solid var(--line);
   background:
     linear-gradient(125deg, rgba(234, 240, 255, 0.72), rgba(255, 255, 255, 0.94) 52%, rgba(74, 199, 232, 0.08));
 }
