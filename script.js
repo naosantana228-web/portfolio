@@ -376,6 +376,10 @@ if (imageLightbox instanceof HTMLDialogElement) {
   }
 
   decisionForm.addEventListener('change', updateDecision);
+  decisionForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    updateDecision();
+  });
   updateDecision();
 
   const qualityData = {
